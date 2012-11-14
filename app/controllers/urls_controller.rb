@@ -8,17 +8,37 @@ class UrlsController < ApplicationController
   end
 
   def create
-  	@url = Url.new(params[:url])
+  	shorten
   	if @url.valid?
   		@url.save
   	else
-  		raise "Try entering your address again with http(s)://appended to the front of the url."
-  		redirect_to @urls
+  		redirect_to urls_path
+  		flash[:notice] = "Please make sure you have appended http(s):// in front of your url and that vanity url has not been previously entered"
   	end
   end
 
   def show
-  	url = Url.find(params[:id])  
-    redirect_to url.address
+  	@url = Url.find(params[:id])  
+    redirect_to @url.address
+    @url.count += 1
+    @url.save
   end
+
+  private
+
+  def shorten
+  	@url = Url.new(params[:url])
+  	if @url.shortened == ""
+  		@url.shortened = random_shortened_url
+  	else
+  		@url.shortened
+  	end
+  end
+
+  def random_shortened_url
+  	(('a'..'z').to_a + ('A'..'Z').to_a + (1..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a + (1..9).to_a).shuffle[0..5].join
+  end
+
+	
 end
+
