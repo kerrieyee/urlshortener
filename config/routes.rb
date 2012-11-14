@@ -1,4 +1,17 @@
 Shorturlapp::Application.routes.draw do
+  resources :urls
+  root :to => "urls#index"
+  match "/:id" => "urls#show"
+
+
+  get "urls/index"
+
+  get "urls/new"
+
+  get "urls/create"
+
+  get "urls/show"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,14 @@
+<h1>Urls</h1>
+<%= form_for :url do |f| %>
+	Url Address: <%= f.text_field :address %>
+	<%=f.submit "Submit" %>
+<% end %>
+
+
+
+
+<p>
+	<% @urls.each do |url|%>
+	<%= link_to("localhost:3000/" + "#{url.id}", "#{url.id}")  +" " + ": #{url.address}" %> <br/>
+	<% end %>
+</p>
