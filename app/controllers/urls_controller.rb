@@ -22,21 +22,24 @@ class UrlsController < ApplicationController
     @url.save
   end
 
+  # def delete
+  #   @url = Url.find(params[:id])
+  #   @url.delete
+  # end
+
   private
 
   def shorten
   	@url = Url.new(params[:url])
   	@url.user_id = current_user.id
   	if @url.shortened == ""
-  		@url.shortened = random_shortened_url
+  		@url.shortened = @url.random_shortened_url
   	else
   		@url.shortened
   	end
   end
 
-  def random_shortened_url
-  	(('a'..'z').to_a + ('A'..'Z').to_a + (1..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a + (1..9).to_a).shuffle[0..5].join
-  end
+
 
 	
 end
