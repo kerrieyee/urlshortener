@@ -31,8 +31,10 @@ class UrlsController < ApplicationController
   private
 
   def shorten
-  	@url = Url.new(params[:url])
-  	@url.user_id = current_user.id
+  	@url = Url.new( :address => params[:url][:address],
+                    :shortened => params[:url][:shortened],
+                    :user_id => current_user.id)
+  	# @url.user_id = current_user.id
   	if @url.shortened == ""
   		@url.shortened = @url.random_shortened_url
   	else
