@@ -1,8 +1,10 @@
-<h1 class = "notice"><%=flash[:notice]%></h1>
+
 <h1>Urls</h1>
 <%= form_for :url do |f| %>
-	Url Address: <%= f.text_field :address %> <br/>
-	Vanity Url: <%= f.text_field :shortened %><br/>
+	Url Address: <br/> 
+	<%= f.text_field :address %> <br/>
+	Vanity Url: (optional) <br/>
+	<%= f.text_field :shortened %><br/>
 	<%=f.submit "Submit" %>
 <% end %>
 
@@ -10,8 +12,12 @@
 
 
 
-<p>
+
 	<% @urls.each do |url|%>
-	<%= link_to("#{url.count}"+ " " +"localhost:3000/" + "#{url.shortened}", "#{url.id}")  +" " + ": #{url.address}" %> <br/>
+	<p class = "url">
+	Shortened Url: <%= link_to("localhost:3000/" + "#{url.shortened}", "#{url.id}")%> <br/> 
+	Original Url: <%=link_to("#{url.address}", "#{url.address}") %><br/>
+	Visit Count: <%="#{url.count}"%><br/>
+	</p>
 	<% end %>
-</p>
+
