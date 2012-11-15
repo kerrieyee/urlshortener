@@ -18,7 +18,7 @@
 	Shortened Url: <%= link_to("localhost:3000/" + "#{url.shortened}", "#{url.id}")%> <br/> 
 	Original Url: <%=link_to("#{url.address}", "#{url.address}") %><br/>
 	Visit Count: <%="#{url.count}"%><br/>
-<!-- 	<%= link_to("Delete", urls_path(DESTROY)) %>
- -->	</p>
+	<%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %>
+	</p>
 	<% end %>
 
