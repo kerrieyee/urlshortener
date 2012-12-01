@@ -5,7 +5,7 @@ This is a 'shorten url' app and is my first rails app that I have written outsid
 Example use case:
 
 Enter url into form: http://www.toxicbananas.com/articles/2012/dont_eat_the_bananas
-You can optionally also submit a vanity URL
+You can also optionally submit a vanity URL.
 Press submit
 New page shows the shortened version: http://localhost:3000/1xOpj0
 When you enter the shortened url into your browser, it will take you to the original website
