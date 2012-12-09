@@ -2,7 +2,10 @@
 
 
 <p> <%=link_to("#{@url.address}", @url.address)%> =>
-<%=link_to("localhost:3000/" + "#{@url.shortened}", @url.shortened)%> 
+<%=link_to("localhost:3000/" + "#{@url.shortened}", "/" + "#{@url.shortened}")%> 
+
+<%="#{@url.inspect}" %>
+
 </p>
 <p>
 <%=link_to("home", urls_path)%>

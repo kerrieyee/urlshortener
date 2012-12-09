@@ -3,7 +3,7 @@ Shorturlapp::Application.routes.draw do
 
   resources :urls
   root :to => "urls#index"
-  match "/:id" => "urls#show"
+  match "/:shortened" => "urls#show"
 
 
   # get "urls/index"

@@ -2,7 +2,6 @@ class UrlsController < ApplicationController
 	before_filter :authenticate_user!
   def index
   	@urls = Url.where(:user_id => current_user.id)
-  	puts "#{@urls.inspect}"
   end
 
   def create
@@ -16,7 +15,7 @@ class UrlsController < ApplicationController
   end
 
   def show
-  	@url = Url.find(params[:id])  
+    @url = Url.find_by_shortened(params[:shortened])
     redirect_to @url.address
     @url.count += 1
     @url.save
@@ -34,7 +33,6 @@ class UrlsController < ApplicationController
   	@url = Url.new( :address => params[:url][:address],
                     :shortened => params[:url][:shortened],
                     :user_id => current_user.id)
-  	# @url.user_id = current_user.id
   	if @url.shortened == ""
   		@url.shortened = @url.random_shortened_url
   	else

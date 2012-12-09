@@ -15,7 +15,7 @@
 
 	<% @urls.each do |url|%>
 	<p class = "url">
-	Shortened Url: <%= link_to("localhost:3000/" + "#{url.shortened}", "#{url.id}")%> <br/> 
+	Shortened Url: <%= link_to("localhost:3000/" + "#{url.shortened}", "localhost:3000/" + "#{url.shortened}")%> <br/> 
 	Original Url: <%=link_to("#{url.address}", "#{url.address}") %><br/>
 	Visit Count: <%="#{url.count}"%><br/>
 	<%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %>
